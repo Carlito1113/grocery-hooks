@@ -24,13 +24,17 @@ const GroceryApp = () => {
       }}
       elevation={0}
     >
-      <AppBar color="primary" position="static" style={{ height: '64px' }}>
+      <AppBar color="primary" position="static" style={{ height: '6vh' }}>
         <Toolbar>
           <Typography color="inherit"> Grocery list with hooks</Typography>
         </Toolbar>
       </AppBar>
-      <GroceryForm addList={addList} />
-      <GroceryList groceries={list} />
+      <Grid container justify="center" style={{ marginTop: '1rem' }}>
+        <Grid item xs={11} md={8} lg={4}>
+          <GroceryForm addList={addList} />
+          <GroceryList groceries={list} />
+        </Grid>
+      </Grid>
     </Paper>
   )
 }

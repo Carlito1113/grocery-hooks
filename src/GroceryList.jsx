@@ -1,5 +1,6 @@
 import React from 'react'
-import { Paper, List, ListItem, ListItemText, Divider } from '@material-ui/core'
+import { Paper, List, Divider } from '@material-ui/core'
+import Item from './Item'
 
 const GroceryList = ({ groceries }) => {
   return (
@@ -7,9 +8,11 @@ const GroceryList = ({ groceries }) => {
       <List>
         {groceries.map(grocery => (
           <>
-            <ListItem>
-              <ListItemText>{grocery.item}</ListItemText>
-            </ListItem>
+            <Item
+              item={grocery.item}
+              key={grocery.id}
+              completed={grocery.completed}
+            />
             <Divider />
           </>
         ))}
