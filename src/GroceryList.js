@@ -2,7 +2,7 @@ import React from 'react'
 import { Paper, List, Divider } from '@material-ui/core'
 import Item from './Item'
 
-const GroceryList = ({ groceries, removeItem, toggleItem }) => {
+const GroceryList = ({ groceries, removeItem, toggleItem, editItem }) => {
   return (
     <Paper>
       <List>
@@ -14,6 +14,7 @@ const GroceryList = ({ groceries, removeItem, toggleItem }) => {
             completed={grocery.completed}
             removeItem={removeItem}
             toggleItem={toggleItem}
+            editItem={editItem}
           />
         ))}
       </List>

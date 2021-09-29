@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Typography, Paper, AppBar, Toolbar, Grid } from '@material-ui/core'
 import GroceryList from './GroceryList'
 import GroceryForm from './GroceryForm'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 
 const GroceryApp = () => {
   const initialList = [
@@ -24,8 +24,17 @@ const GroceryApp = () => {
     setList(updatedList)
   }
 
-  const toggleItem = (itemId) => {
-    const updatedItems = list.map(item => item.id === itemId ? {...item, completed: !item.completed} : item)
+  const toggleItem = itemId => {
+    const updatedItems = list.map(item =>
+      item.id === itemId ? { ...item, completed: !item.completed } : item
+    )
+    setList(updatedItems)
+  }
+
+  const editItem = (itemId, newItem) => {
+    const updatedItems = list.map(item =>
+      item.id === itemId ? { ...item, item: newItem } : item
+    )
     setList(updatedItems)
   }
 
@@ -47,7 +56,12 @@ const GroceryApp = () => {
       <Grid container justify="center" style={{ marginTop: '1rem' }}>
         <Grid item xs={11} md={8} lg={4}>
           <GroceryForm addList={addList} />
-          <GroceryList groceries={list} removeItem={removeItem} toggleItem={toggleItem} />
+          <GroceryList
+            groceries={list}
+            removeItem={removeItem}
+            toggleItem={toggleItem}
+            editItem={editItem}
+          />
         </Grid>
       </Grid>
     </Paper>

@@ -1,5 +1,5 @@
 import './App.css';
-import GroceryApp from './GroceryApp.jsx'
+import GroceryApp from './GroceryApp'
 
 function App() {
   return <GroceryApp/>
