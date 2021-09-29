@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Grid from '@material-ui/core/Grid'
+import { Typography, Paper, AppBar, Toolbar, Grid } from '@material-ui/core'
 import GroceryList from './GroceryList'
+import GroceryForm from './GroceryForm'
 
 const GroceryApp = () => {
   const initialList = [
@@ -13,6 +10,9 @@ const GroceryApp = () => {
     { id: 3, item: 'Face wash', completed: false },
   ]
   const [list, setList] = useState(initialList)
+  const addList = newListText => {
+    setList([...list, { id: 4, item: newListText, completed: false }])
+  }
 
   return (
     <Paper
@@ -29,6 +29,7 @@ const GroceryApp = () => {
           <Typography color="inherit"> Grocery list with hooks</Typography>
         </Toolbar>
       </AppBar>
+      <GroceryForm addList={addList} />
       <GroceryList groceries={list} />
     </Paper>
   )
