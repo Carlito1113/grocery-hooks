@@ -14,7 +14,7 @@ function Item({ item, completed, removeItem, toggleItem, id, editItem }) {
   const [isEditing, toggle] = useToggleState(false)
 
   return (
-    <ListItem>
+    <ListItem style={{ height: '64px' }} >
       {isEditing ? (
         <EditItemForm
           editItem={editItem}

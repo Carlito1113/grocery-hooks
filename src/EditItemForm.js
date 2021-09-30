@@ -11,12 +11,15 @@ const EditItemForm = ({ editItem, id, item, toggleEditForm }) => {
       editItem(id, value)
       reset()
       toggleEditForm()
-    }}>
+    }}
+    style={{ marginLeft: '1rem', width: '50%' }}
+    >
       <TextField
         margin="normal"
         value={value}
         onChange={handleChange}
         fullWidth
+        autoFocus
       />
     </form>
   )
