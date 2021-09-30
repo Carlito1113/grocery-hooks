@@ -10,10 +10,8 @@ const GroceryList = ({ groceries, removeItem, toggleItem, editItem }) => {
           {groceries.map((grocery, index) => (
             <>
               <Item
-                id={grocery.id}
-                item={grocery.item}
+                {...grocery}
                 key={grocery.id}
-                completed={grocery.completed}
                 removeItem={removeItem}
                 toggleItem={toggleItem}
                 editItem={editItem}
@@ -24,7 +22,7 @@ const GroceryList = ({ groceries, removeItem, toggleItem, editItem }) => {
         </List>
       </Paper>
     )
-  } 
+  }
   return null
 }
 

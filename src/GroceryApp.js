@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import useItemState from './hooks/useItemState'
 import { Typography, Paper, AppBar, Toolbar, Grid } from '@material-ui/core'
 import GroceryList from './GroceryList'
 import GroceryForm from './GroceryForm'
@@ -6,42 +7,14 @@ import { v4 as uuidv4 } from 'uuid'
 
 const GroceryApp = () => {
   const initialList = JSON.parse(window.localStorage.getItem('list') || '[]')
-  // const initialList = [
-  //   { id: 1, item: 'Kefir', completed: false },
-  //   { id: 2, item: 'Popcorners', completed: false },
-  //   { id: 3, item: 'Face wash', completed: false },
-  // ]
 
-  const [list, setList] = useState(initialList)
+  const { list, addList, removeItem, toggleItem, editItem } = useItemState(
+    initialList
+  )
 
   useEffect(() => {
     window.localStorage.setItem('list', JSON.stringify(list))
   }, [list])
-
-  const addList = newListText => {
-    setList([...list, { id: uuidv4(), item: newListText, completed: false }])
-  }
-
-  const removeItem = itemId => {
-    // filter out removed item
-    const updatedList = list.filter(item => item.id !== itemId)
-    // Call setList with new list array
-    setList(updatedList)
-  }
-
-  const toggleItem = itemId => {
-    const updatedItems = list.map(item =>
-      item.id === itemId ? { ...item, completed: !item.completed } : item
-    )
-    setList(updatedItems)
-  }
-
-  const editItem = (itemId, newItem) => {
-    const updatedItems = list.map(item =>
-      item.id === itemId ? { ...item, item: newItem } : item
-    )
-    setList(updatedItems)
-  }
 
   return (
     <Paper
